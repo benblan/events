@@ -21,12 +21,16 @@ public class EventResource {
 		// TODO Auto-generated constructor stub
 	}
 
+	// Le json est passé directement dans le corps de la requete => @RequestBody
+	// Spring + Jackson s'occupent de transformer le Json en EnventList
 	@PostMapping(value = "/events", consumes = {"application/json" })
 	public ResponseEntity<String> postEvent(@RequestBody EventList eventList) {
 		logger.info("Reception list event");
-		logger.info("Envoi id : " + eventList.getId());
+		logger.info("Envoi id : " + eventList.getIdempotencyKey());
 		
+		// Parcours de la liste des évenements recus dans le Json
 		for (Event event : eventList.getEvents()) {
+			// Pour savoir a quel évenement on a affaire, on regarde son type
 			if (event.getType().equals("typeEvent1")) {
 				Event1 e1 = (Event1) event;
 				logger.info("Event de type typeEvent1, Direction: " + e1.getDirection());
@@ -35,8 +39,7 @@ public class EventResource {
 				logger.info("Event de type typeEvent2, Direction: " + e2.getStatus());
 			}
 		}
-		Event event = eventList.getEvent(0);
-		logger.info("Event 0 type " + event.getType() + ", Direction: " + ((Event1) event).getDirection() );
+		
 		return new ResponseEntity<String>("OK", HttpStatus.OK);
 	}
 }

@@ -2,6 +2,11 @@ package org.ben.swagger.listarray.dto;
 
 import com.fasterxml.jackson.annotation.JsonRootName;
 
+/**
+ * Un exemple d'événements AtosWL
+ * @author BENOITBlancard
+ *
+ */
 @JsonRootName("typeEvent1")
 public class Event1 implements Event {
 

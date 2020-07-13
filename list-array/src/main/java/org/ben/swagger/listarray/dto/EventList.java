@@ -5,7 +5,7 @@ import java.util.List;
 
 public class EventList {
 
-	private int id;
+	private int idempotencyKey;
 	private List<Event> events;
 	
 	public List<Event> getEvents() {
@@ -16,12 +16,12 @@ public class EventList {
 		this.events = events;
 	}
 
-	public int getId() {
-		return id;
+	public int getIdempotencyKey() {
+		return idempotencyKey;
 	}
 	
-	public void setId(int id) {
-		this.id = id;
+	public void setIdempotencyKey(int idempotencyKey) {
+		this.idempotencyKey = idempotencyKey;
 	}
 
 	public Event getEvent(int index) {
@@ -37,7 +37,7 @@ public class EventList {
 	}
 
 	public EventList(int id) {
-		this.id = id;
+		this.idempotencyKey = id;
 		events = new ArrayList<Event>();
 	}
 }

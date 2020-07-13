@@ -1,0 +1,39 @@
+{
+	"info": {
+		"_postman_id": "b8707f37-4e7a-47e5-a8b6-f14cbed949a0",
+		"name": "Events",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Post Events",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\"idempotencyKey\": \"456\", \n \"events\" : [\n \t{\"typeEvent1\": {\"direction\" : \"OUT\"}}, \n \t{\"typeEvent2\": {\"status\" : \"WAIT\"}},\n \t{\"typeEvent2\": {\"status\" : \"SUCESS\"}}\n ]}"
+				},
+				"url": {
+					"raw": "http://localhost:8080/events",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"events"
+					]
+				}
+			},
+			"response": []
+		}
+	],
+	"protocolProfileBehavior": {}
+}
