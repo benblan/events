@@ -33,6 +33,64 @@
 				}
 			},
 			"response": []
+		},
+		{
+			"name": "Post Events New",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\"idempotencyKey\": \"456\", \n \"events\" : [\n \t{\"direction\" : \"OUT\", \"telephone\": \"4536\", \"typeEvent\" : \"typeEvent1\"}, \n \t{\"status\" : \"WAIT\", \"typeEvent\" : \"typeEvent2\"},\n \t{\"status\" : \"SUCCESS\", \"typeEvent\" : \"typeEvent2\"}\n ]}"
+				},
+				"url": {
+					"raw": "http://localhost:8080/events2",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"events2"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Post Events New Fail",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\"idempotencyKey\": \"456\", \n \"events\" : [\n \t{\"direction\" : \"OUT\", \"telephone\": \"4536\", \"typeEvent\" : \"typeEvent1\"}, \n \t{\"status\" : \"WAIT\", \"typeEvent\" : \"typeEvent2\"},\n \t{\"status\" : \"SUCCESS\", \"typeEvent\" : \"typeEvent2\"},\n\t{\"status\" : \"SUCCESS\", \"typeEvent\" : \"typeEvent3\"}\n ]}"
+				},
+				"url": {
+					"raw": "http://localhost:8080/events2",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"events2"
+					]
+				}
+			},
+			"response": []
 		}
 	],
 	"protocolProfileBehavior": {}
